@@ -1,15 +1,12 @@
 ﻿using Entity;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace DataLayer
 {
     public class UserRepository : SQLDataHelper
     {
-        public UserRepository(string nameTable, string connectionPath) : base(nameTable, connectionPath)
-        {
-            
-        }
+        public UserRepository(string nameTable, string connectionPath) : base(nameTable, connectionPath) {} // Создание объекта и вызов конструктора родителя (из DR)
+
         public void AddUser(User user)
         {
              CustomSql(@$"INSERT INTO [dbo].[UsersList]
@@ -22,12 +19,11 @@ namespace DataLayer
         }
         public User ReadUser(Guid id)
         {
-            User user; 
             DataTable dataTable = CustomSql($"select * from {NameTable} WHERE ID = '{id}'");
             if (dataTable.Rows.Count > 0)
             {
-                var item = dataTable.Rows[0];
-                return new User(item.Field<Guid>("ID"), item.Field<string>("Login"), item.Field<string>("Password"));
+                var row = dataTable.Rows[0];
+                return new User(row.Field<Guid>("ID"), row.Field<string>("Login"), row.Field<string>("Password"));
             }
             else
             {
@@ -36,7 +32,6 @@ namespace DataLayer
         }
         public User FindUser(string login)
         {
-            User user;
             DataTable dataTable = CustomSql($"select * from {NameTable} WHERE Login = '{login}'");
             if (dataTable.Rows.Count > 0)
             {
@@ -50,7 +45,6 @@ namespace DataLayer
         }
         public List<User> ReadAllUsers()
         {
-            User user; 
             DataTable dataTable = CustomSql($"select * from {NameTable}");
             List<User> users = new();
             foreach (DataRow item in dataTable.Rows)

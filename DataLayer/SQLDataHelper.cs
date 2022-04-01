@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer
 {
     public class SQLDataHelper
     {
-        protected string DataBaseConnectionPath { get; set; }
+        protected string ConnectionString { get; set; } // Строка подключения, доступна у наследников
 
-        public SQLDataHelper(string nameTable, string connectionPath )
+        public SQLDataHelper(string nameTable, string connectionString) // Конструктор (принимает название таблицы в БД и строку подключения)
         {
+            ConnectionString = connectionString;
             NameTable = nameTable;
             Table = new DataTable();
         }
@@ -21,16 +17,16 @@ namespace DataLayer
         public string NameTable { get; private set; }
         protected DataTable Table { get; set; }
 
-        public new DataTable CustomSql(string request)
+        public DataTable CustomSql(string request)
         {
             DataTable table = new DataTable();
-            using (SqlConnection connection = new SqlConnection(DataBaseConnectionPath))
+            using (SqlConnection connection = new SqlConnection(ConnectionString)) // Using - автоматическое закрытие
             using (SqlCommand cmd = new SqlCommand(request, connection))
             {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(request, connection);
-                adapter.Fill(table);
-                cmd.ExecuteNonQuery();
+                SqlDataAdapter adapter = new SqlDataAdapter(request, connection); // Мост сопоставления таблицы на сервере и у нас
+                adapter.Fill(table); // Добавляет строки 
+                cmd.ExecuteNonQuery(); // Выполнение команды (возвращает количество измененных строк) 
             }
             return table;
         }
