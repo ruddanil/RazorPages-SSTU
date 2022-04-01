@@ -12,10 +12,16 @@ namespace DataLayer
              CustomSql(@$"INSERT INTO [dbo].[UsersList]
                    ([ID]
                    ,[Login]
-                   ,[Password])
+                   ,[Password]
+                   ,[Name]
+                   ,[Email]
+                   ,[Age]
              VALUES
                    ({user.Login}
-                   ,{user.Password}");
+                   ,{user.Password}
+                   ,{user.Name}
+                   ,{user.Email}
+                   ,{user.Age}");
         }
         public User ReadUser(Guid id)
         {
@@ -23,7 +29,7 @@ namespace DataLayer
             if (dataTable.Rows.Count > 0)
             {
                 var row = dataTable.Rows[0];
-                return new User(row.Field<Guid>("ID"), row.Field<string>("Login"), row.Field<string>("Password"));
+                return new User(row.Field<Guid>("ID"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Name"), row.Field<string>("Email"), row.Field<int>("Age"));
             }
             else
             {
@@ -35,8 +41,8 @@ namespace DataLayer
             DataTable dataTable = CustomSql($"select * from {NameTable} WHERE Login = '{login}'");
             if (dataTable.Rows.Count > 0)
             {
-                var item = dataTable.Rows[0];
-                return new User(item.Field<Guid>("ID"), item.Field<string>("Login"), item.Field<string>("Password"));
+                var row = dataTable.Rows[0];
+                return new User(row.Field<Guid>("ID"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Name"), row.Field<string>("Email"), row.Field<int>("Age"));
             }
             else
             {
@@ -47,9 +53,9 @@ namespace DataLayer
         {
             DataTable dataTable = CustomSql($"select * from {NameTable}");
             List<User> users = new();
-            foreach (DataRow item in dataTable.Rows)
+            foreach (DataRow row in dataTable.Rows)
             {
-                users.Add( new User(item.Field<Guid>("ID"), item.Field<string>("Login"), item.Field<string>("Password"))); 
+                users.Add(new User(row.Field<Guid>("ID"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Name"), row.Field<string>("Email"), row.Field<int>("Age"))); 
             }
             return users;
 
@@ -60,7 +66,10 @@ namespace DataLayer
                SET [ID] = '{user.Id}'
                   ,[Login] = '{user.Login}'
                   ,[Password] = '{user.Password}'
-               WHERE ID = '{ user.Id}'>");
+                  ,[Name] = '{user.Name}'
+                  ,[Email] = '{user.Email}'
+                  ,[Age] = '{user.Age}'
+               WHERE ID = '{user.Id}'>");
         }
         public void DeleteUser(User user)
         {

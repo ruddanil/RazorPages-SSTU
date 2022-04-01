@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using System.Text.RegularExpressions;
 
 namespace BusinessLayer
 {
@@ -35,6 +36,11 @@ namespace BusinessLayer
             {
                 return password == truePassword;
             }
+        }
+        public bool checkCorrectInputs(string password, string name, string email, int age)
+        {
+            Regex regexEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            return (password == null || name == null || email == null || age == null || (age < 18 && age > 65) || !regexEmail.Match(email).Success);
         }
     }
 }
