@@ -32,5 +32,13 @@
             }
 
         }
+
+        public User(Guid id, string login, string password, string name, string email, int age) : this(id, login, password) 
+        {
+            Name = name;
+            Email = email;
+            Age = age;
+        }
+
     }
 }
