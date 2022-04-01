@@ -13,12 +13,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseHttpsRedirection(); // Перенаправление запросов на HTTPS
+app.UseStaticFiles(); // Поддержка обработки статических файлов (WWW)
 
-app.UseRouting();
+app.UseRouting(); // Маршрутизация
 
-app.UseAuthorization();
+app.UseAuthorization(); 
 
 app.MapRazorPages();
 

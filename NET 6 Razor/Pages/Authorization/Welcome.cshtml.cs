@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace NET_6_Razor.Pages
 {
-    public class IndexModel : PageModel
+    public class WelcomeModel : PageModel
     {
-        public void OnGet()
+        public string name;
+        public void OnGet(string name)
         {
+            this.name= name;
         }
     }
 }

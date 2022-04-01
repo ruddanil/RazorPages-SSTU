@@ -1,0 +1,34 @@
+﻿@page
+@model NET_6_Razor.Pages.RadiobuttonModel
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Простая форма</title>
+</head>
+<body>
+    <form action="" method="POST">
+    <input type="text" name="textBox"/>
+    <select multiple size="5" name="listBox">
+        <option>123</option>
+        <option>456</option>
+        <option>789</option>
+        <option>101</option>
+    </select>
+    <select name="dropdownList">
+        <option>аа</option>
+        <option>ббб</option>
+        <option>ввв</option>
+        <option>ггг</option>
+    </select>
+
+    <input type="radio" name="radio" value="1"/>
+    <input type="radio" name="radio" value="2"/>
+    <input type="radio" name="radio" value="3"/>
+
+    <input type="submit" value="Отправить"/>
+
+    <label name="label">@Model.result</label>
+</form>
+</body>
+</html> 
