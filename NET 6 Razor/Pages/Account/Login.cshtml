@@ -1,0 +1,22 @@
+﻿@page
+@model NET_6_Razor.Pages.Account.LoginModel
+
+<div>
+    <div>
+        <h1>Авторизация по данным из DataBase</h1>
+        <form method="post">
+            <label>Логин: </label><br />
+            <input type="text" name="login" placeholder="vasya" minlength="5" required><br />
+            <label>Пароль: </label><br />
+            <input type="password" name="password" placeholder="********" minlength="8" required><br />
+            <label>@Model.errorMassage</label><br />
+            <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button><br /><br />
+        </form>
+        <div>
+            Аккаунт еще не создан? <a asp-page="/Account/Registration" asp-page-handler="Signin">Зарегистрироваться</a>
+        </div>
+    </div>
+</div>
+
+
+

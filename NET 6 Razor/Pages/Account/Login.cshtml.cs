@@ -2,8 +2,8 @@ using BusinessLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace NET_6_Razor.Pages
-{ 
+namespace NET_6_Razor.Pages.Account
+{
     public class LoginModel : PageModel
     {
         private UserManager userManager = DependencyResolver.Instance.UserManager; // Обращение к экземпляру UserManager
@@ -12,11 +12,19 @@ namespace NET_6_Razor.Pages
         {
 
         }
+        public IActionResult OnGetLogout()
+        {
+            HttpContext.Session.Remove("login");
+            HttpContext.Session.Remove("password");
+            return Page();
+        }
         public IActionResult OnPost(string login, string password)
         {
             if (userManager.checkPassword(login, password))
             {
-                return Redirect($"Authorization/Welcome?name={login}");
+                HttpContext.Session.SetString("login", login);
+                HttpContext.Session.SetString("password", password);
+                return RedirectToPage("Welcome");
             }
             else
             {

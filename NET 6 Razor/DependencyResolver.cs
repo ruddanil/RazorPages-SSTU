@@ -27,6 +27,7 @@ namespace NET_6_Razor
         {
             UserRepository userRepository = new("UsersList", connectionString);
             UserManager = new(userRepository);
+
         }
     }
 }
