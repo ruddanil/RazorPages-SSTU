@@ -10,18 +10,17 @@ namespace DataLayer
         public void AddUser(User user)
         {
              CustomSql(@$"INSERT INTO [dbo].[UsersList]
-                   ([ID]
-                   ,[Login]
+                   ([Login]
                    ,[Password]
                    ,[Name]
                    ,[Email]
-                   ,[Age]
+                   ,[Age])
              VALUES
-                   ({user.Login}
-                   ,{user.Password}
-                   ,{user.Name}
-                   ,{user.Email}
-                   ,{user.Age}");
+                   ('{user.Login}'
+                   ,'{user.Password}'
+                   ,'{user.Name}'
+                   ,'{user.Email}'
+                   ,'{user.Age}')");
         }
         public User ReadUser(Guid id)
         {
@@ -76,6 +75,8 @@ namespace DataLayer
           CustomSql(@$"DELETE FROM [dbo].[UsersList]
                WHERE ID = '{user.Id}'");
         }
+
+        
 
     }
 }

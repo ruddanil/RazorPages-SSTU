@@ -1,0 +1,37 @@
+﻿@page
+@model NET_6_Razor.Pages.Account.RegistrationModel
+
+<div>
+    <div>
+        <h1>Регистрация</h1>
+        <form method="post">
+            <label>Логин: </label><br />
+            <input type="text" name="login" placeholder="vasya" minlength="5" required><br />
+            <label>Пароль: </label><br />
+            <input type="password" name="password" placeholder="********" id="password" minlength="8" required><br />
+            <label>Повтор пароля: </label><br />
+            <input type="password" name="secondPassword" placeholder="********" id="secondPassword" minlength="8" required><br />
+            <label>Имя: </label><br />
+            <input type="text" name="name" placeholder="Василий" required><br />
+            <label>Email: </label><br />
+            <input type="email" name="email" placeholder="example@gmail.com" required><br />
+            <label>Возраст: </label><br />
+            <input type="number" name="age" placeholder="23" min="18" max="65" required><br />
+            <label>@Model.allError</label><br />
+            <button type="submit" name="form_auth_submit" action=che>Зарегистрироваться</button>
+        </form>
+        <div>
+            Уже есть аккаунт? <a asp-page="/Account/Login" asp-page-handler="Logout">Войти</a>
+        </div>
+    </div>
+</div>
+@*@section scripts {
+     <script type="text/javascript">
+        checkSecondPassword2(document.getElementById("password"),document.getElementById("secondPassword"));
+     </script>
+}*@
+
+
+
+
+
