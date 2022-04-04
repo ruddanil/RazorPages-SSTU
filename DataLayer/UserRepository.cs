@@ -7,7 +7,7 @@ namespace DataLayer
     {
         public UserRepository(string nameTable, string connectionPath) : base(nameTable, connectionPath) {} // Создание объекта и вызов конструктора родителя (из DR)
 
-        public void AddUser(User user)
+        public void CreateUser(User user)
         {
              CustomSql(@$"INSERT INTO [dbo].[UsersList]
                    ([Login]
@@ -62,13 +62,12 @@ namespace DataLayer
         public void UpdateUser(User user)
         {
            CustomSql(@$"UPDATE [dbo].[UsersList]
-               SET [ID] = '{user.Id}'
-                  ,[Login] = '{user.Login}'
+               SET [Login] = '{user.Login}'
                   ,[Password] = '{user.Password}'
                   ,[Name] = '{user.Name}'
                   ,[Email] = '{user.Email}'
                   ,[Age] = '{user.Age}'
-               WHERE ID = '{user.Id}'>");
+               WHERE ID = '{user.Id}'");
         }
         public void DeleteUser(User user)
         {
