@@ -10,7 +10,6 @@ namespace NET_6_Razor.Pages.Account
     public class RegistrationModel : PageModel
     {
         private UserManager userManager = DependencyResolver.Instance.UserManager;
-
         public void OnGet()
         {
 
@@ -53,7 +52,7 @@ namespace NET_6_Razor.Pages.Account
             }
             if (userManager.checkCorrectInputs(password, name, email, age) && errorFlag == false)
                 {
-                    userManager.addNewUser(id, login, password, name, email, age);
+                    userManager.addUser(id, login, password, name, email, age);
                     return RedirectToPage("/Account/Login");
             }
             errorFlag = false;

@@ -1,0 +1,69 @@
+﻿using Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataLayer
+{
+    public class ProductRepository : SQLDataHelper
+    {
+        public ProductRepository(string nameTable, string connectionPath) : base(nameTable, connectionPath) { }
+
+        public void CreateProduct(Product product)
+        {
+            CustomSql(@$"INSERT INTO [dbo].[Product]
+                   ([Title]
+                   ,[Quantity]
+                   ,[Price]
+                   ,[Description])
+             VALUES
+                   ('{product.Title}'
+                   ,'{product.Quantity}'
+                   ,'{product.Price}'
+                   ,'{product.Description}')");
+        }
+        public Product ReadProduct(Guid id)
+        {
+            DataTable dataTable = CustomSql($"select * from {NameTable} WHERE ID = '{id}'");
+            if (dataTable.Rows.Count > 0)
+            {
+                var row = dataTable.Rows[0];
+                return new Product(row.Field<Guid>("ID_product"), row.Field<string>("Title"), row.Field<int>("Quantity"), row.Field<decimal>("Price"), row.Field<string>("Description"));
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public List<Product> ReadAllProducts()
+        {
+            DataTable dataTable = CustomSql($"select * from {NameTable}");
+            List<Product> products = new();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                products.Add(new Product(row.Field<Guid>("ID_product"), row.Field<string>("Title"), row.Field<int>("Quantity"), row.Field<decimal>("Price"), row.Field<string>("Description")));
+            }
+            return products;
+        }
+
+        public void UpdateUser(Product product)
+        {
+            CustomSql(@$"UPDATE [dbo].[Product]
+               SET [Title] = '{product.Title}'
+                  ,[Quantity] = '{product.Quantity}'
+                  ,[Price] = '{product.Price}'
+                  ,[Description] = '{product.Description}'
+               WHERE ID = '{product.ID_product}'");
+        }
+        public void DeleteUser(Product product)
+        {
+            CustomSql(@$"DELETE FROM [dbo].[Product]
+               WHERE ID_product = '{product.ID_product}'");
+        }
+
+    }
+}

@@ -1,0 +1,24 @@
+﻿@page
+@model NET_6_Razor.Pages.UserCRUD.UserListModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr><th>Имя</th><th>Возраст</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.userList)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Age</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" asp-page="/UserCRUD/UserUpdate" asp-route-id="@user.Id">Изменить</button>
+                        <button type="submit" asp-page-handler="Delete" asp-route-id="@user.Id">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

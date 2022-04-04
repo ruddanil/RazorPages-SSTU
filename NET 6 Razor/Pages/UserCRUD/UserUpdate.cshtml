@@ -1,0 +1,21 @@
+﻿@page
+@model NET_6_Razor.Pages.UserCRUD.UserUpdateModel
+@{
+}
+<form method="post">
+    <div>
+        <label>Имя</label>
+        <div>
+            <input type="text" name="name" value="@Model.user.Name" />
+        </div>
+    </div>
+    <div>
+        <label>Возраст</label>
+        <div>
+            <input type="number" name="age" value="@Model.user.Age" />
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Сохранить" asp-page-handler="Update" asp-route-id="@Model.user.Id"/>
+    </div>
+</form>
