@@ -1,0 +1,24 @@
+﻿@page
+@model NET_6_Razor.Pages.Public.ProductListUserModel
+@{
+}
+<h1>Список товаров</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr><th>Название</th><th>Количество</th><th>Цена</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.productList)
+        {
+            <tr>
+                <td>@product.Title</td>
+                <td>@product.Quantity</td>
+                <td>@product.Price</td>
+                <td>@product.Description</td>
+                @*<td><form method="post"><button type="submit" asp-page="/Public/Cart" asp-page-handler="buynow" asp-route-id_product="@product.ID_product">Добавить в корзину</button></form></td>*@
+                <td><a asp-page="/Public/Cart" asp-page-handler="BuyNow" asp-route-id_product="@product.ID_product">Buy Now</a></td>
+            </tr>
+        }
+      </tbody>
+</table>

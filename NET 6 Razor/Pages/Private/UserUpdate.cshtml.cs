@@ -3,7 +3,7 @@ using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace NET_6_Razor.Pages.UserCRUD
+namespace NET_6_Razor.Pages.Private
 {
     public class UserUpdateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace NET_6_Razor.Pages.UserCRUD
             user = userManager.readUser(id);
             User updatedUser = new(id, firstName, lastName, middleName, age, login, password, email, phone, isAdmin);
             userManager.updateUser(updatedUser);
-            return RedirectToPage("/UserCRUD/UserList");
+            return RedirectToPage("/Private/UserList");
         }
     }
 }

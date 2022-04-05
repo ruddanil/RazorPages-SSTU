@@ -3,7 +3,7 @@ using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace NET_6_Razor.Pages.ProductCRUD
+namespace NET_6_Razor.Pages.Private
 {
     public class ProductCreateModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace NET_6_Razor.Pages.ProductCRUD
         public IActionResult OnPostCreate (Guid id_product, string title, int quantity, decimal price, string description)
         {
             productManager.createProduct(id_product, title, quantity, price, description);
-            return RedirectToPage("/ProductCRUD/ProductList");
+            return RedirectToPage("/Private/ProductList");
         }
     }
 }

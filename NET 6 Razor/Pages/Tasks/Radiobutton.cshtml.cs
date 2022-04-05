@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace NET_6_Razor.Pages
+namespace NET_6_Razor.Pages.Tasks
 {
     public class RadiobuttonModel : PageModel
     {

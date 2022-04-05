@@ -1,5 +1,5 @@
 ﻿@page
-@model NET_6_Razor.Pages.ProductCRUD.ProductListModel
+@model NET_6_Razor.Pages.Private.ProductListModel
 @{
 }
 <h1>Список товаров</h1>
@@ -17,9 +17,9 @@
                 <td>@product.Price</td>
                 <td>@product.Description</td>
                 <td>
-                    <form method="post">
-                        <button type="submit" asp-page="/ProductCRUD/ProductUpdate" asp-route-id_product="@product.ID_product">Изменить</button>
-                        <button type="submit" asp-page-handler="Delete" asp-route-id_product="@product.ID_product">Удалить</button>
+                    <form method="post">   
+                        <button runat="server" type="submit" id="edit" asp-page="/Private/ProductUpdate" asp-route-id_product="@product.ID_product">Изменить</button>
+                        <button runat="server" type="submit" id="delete" asp-page-handler="Delete" asp-route-id_product="@product.ID_product">Удалить</button>
                     </form>
                 </td>
             </tr>
@@ -27,5 +27,5 @@
       </tbody>
 </table>
 <form method="post">
-    <button type="submit" asp-page="/ProductCRUD/ProductCreate">Создать</button>
+    <button type="submit" asp-page="/Private/ProductCreate">Создать</button>
 </form>

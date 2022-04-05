@@ -2,7 +2,7 @@ using BusinessLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace NET_6_Razor.Pages.Account
+namespace NET_6_Razor.Pages.Tasks
 {
     public class SimpleLoginModel : PageModel
     {

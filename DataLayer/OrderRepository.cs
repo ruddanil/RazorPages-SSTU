@@ -16,22 +16,18 @@ namespace DataLayer
         {
             CustomSql(@$"INSERT INTO [dbo].[Order]
                    ([ID_user]
-                   ,[ID_product]
-                   ,[Description]
                    ,[Date])
              VALUES
                    ('{order.ID_user}'
-                   ,'{order.ID_product}'
-                   ,'{order.Description}'
                    ,'{order.Date}')");
         }
-        public Order ReadOrder(Guid id)
+        public Order ReadOrder(Guid id_order)
         {
-            DataTable dataTable = CustomSql($"select * from {NameTable} WHERE ID = '{id}'");
+            DataTable dataTable = CustomSql($"select * from {NameTable} WHERE ID_order = '{id_order}'");
             if (dataTable.Rows.Count > 0)
             {
                 var row = dataTable.Rows[0];
-                return new Order(row.Field<Guid>("ID_order"), row.Field<Guid>("ID_user"), row.Field<Guid>("ID_product"), row.Field<string>("Description"), row.Field<DateTime>("Date"));
+                return new Order(row.Field<Guid>("ID_order"), row.Field<Guid>("ID_user"), row.Field<DateTime>("Date"));
             }
             else
             {
@@ -45,7 +41,7 @@ namespace DataLayer
             List<Order> orders = new();
             foreach (DataRow row in dataTable.Rows)
             {
-                orders.Add(new Order(row.Field<Guid>("ID_order"), row.Field<Guid>("ID_user"), row.Field<Guid>("ID_product"), row.Field<string>("Description"), row.Field<DateTime>("Date")));
+                orders.Add(new Order(row.Field<Guid>("ID_order"), row.Field<Guid>("ID_user"), row.Field<DateTime>("Date")));
             }
             return orders;
         }
@@ -54,14 +50,12 @@ namespace DataLayer
         {
             CustomSql(@$"UPDATE [dbo].[Order]
                SET [ID_user] = '{order.ID_user}'
-                  ,[ID_product] = '{order.ID_product}'
-                  ,[Description] = '{order.Description}'
                   ,[Date] = '{order.Date}'");
         }
         public void DeleteOrder(Order order)
         {
             CustomSql(@$"DELETE FROM [dbo].[Order]
-               WHERE ID_product = '{order.ID_order}'");
+               WHERE ID_order = '{order.ID_order}'");
         }
 
     }

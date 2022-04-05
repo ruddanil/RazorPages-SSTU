@@ -3,7 +3,7 @@ using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace NET_6_Razor.Pages.OrderCRUD
+namespace NET_6_Razor.Pages.Private
 {
     public class OrderUpdateModel : PageModel
     {
