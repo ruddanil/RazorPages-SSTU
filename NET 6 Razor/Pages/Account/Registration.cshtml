@@ -23,12 +23,6 @@
         </div>
     </div>
     <div>
-        <label>Возраст</label>
-        <div>
-            <input type="number" name="age" placeholder="25" min="18" max="65" required />
-        </div>
-    </div>
-    <div>
         <label>Логин:</label>
         <div>
             <input type="text" name="login" placeholder="vasya" minlength="5" required />
@@ -65,6 +59,9 @@
         </div>
     </div>
     <br />
+    <div>
+        <label>@Model.allError</label>
+    </div>
     <div>
         <input type="submit" value="Зарегистрироваться" asp-page-handler="Create" />
     </div>
