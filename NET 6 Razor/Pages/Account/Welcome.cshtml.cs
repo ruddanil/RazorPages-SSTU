@@ -14,6 +14,5 @@ namespace NET_6_Razor.Pages.Account
             password = HttpContext.Session.GetString("password");
             isAdmin = HttpContext.Session.GetString("isAdmin");
         }
-
     }
 }

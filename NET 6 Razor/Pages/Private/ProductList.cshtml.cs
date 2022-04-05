@@ -23,6 +23,6 @@ namespace NET_6_Razor.Pages.Private
             }
             productList = productManager.readAllProducts();
         }
-        
+
     }
 }

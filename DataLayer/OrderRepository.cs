@@ -12,18 +12,24 @@ namespace DataLayer
     {
         public OrderRepository(string nameTable, string connectionPath) : base(nameTable, connectionPath) { }
 
-        public void CreateOrder(Order order)
+        public Guid CreateOrder(Order order)
         {
-            CustomSql(@$"INSERT INTO [dbo].[Order]
+            DataTable dataTable = CustomSql(@$"
+                Declare @IdentityOutput table (ID_order uniqueidentifier)
+                INSERT INTO [dbo].[Order]
                    ([ID_user]
                    ,[Date])
+                Output inserted.ID_order into @IdentityOutput
              VALUES
                    ('{order.ID_user}'
-                   ,'{order.Date}')");
+                   ,'{order.Date}')
+                Select * from @IdentityOutput");
+            var row = dataTable.Rows[0];
+            return row.Field<Guid>("ID_order");
         }
         public Order ReadOrder(Guid id_order)
         {
-            DataTable dataTable = CustomSql($"select * from {NameTable} WHERE ID_order = '{id_order}'");
+            DataTable dataTable = CustomSql($"select * from [dbo].[Order] WHERE ID_order = '{id_order}'");
             if (dataTable.Rows.Count > 0)
             {
                 var row = dataTable.Rows[0];
@@ -37,7 +43,7 @@ namespace DataLayer
 
         public List<Order> ReadAllOrders()
         {
-            DataTable dataTable = CustomSql($"select * from {NameTable}");
+            DataTable dataTable = CustomSql($"select * from [dbo].[Order]");
             List<Order> orders = new();
             foreach (DataRow row in dataTable.Rows)
             {

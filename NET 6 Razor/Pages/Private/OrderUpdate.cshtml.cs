@@ -20,12 +20,12 @@ namespace NET_6_Razor.Pages.Private
             order = orderManager.readOrder(id_order);
             return Page();
         }
-        //public IActionResult OnPostUpdate(Guid id_order, string title, int quantity, decimal price, string description)
-        //{
-        //    order = orderManager.readOrder(id_order);
-        //    Order updatedOrder = new(id_order, title, quantity, price, description);
-        //    orderManager.updateOrder(updatedOrder);
-        //    return RedirectToPage("/OrderCRUD/OrderList");
-        //}
+        public IActionResult OnPostUpdate(Guid id_order, Guid id_user, DateTime date)
+        {
+            order = orderManager.readOrder(id_order);
+            Order updatedOrder = new(id_order, id_user, date);
+            orderManager.updateOrder(updatedOrder);
+            return RedirectToPage("/Private/OrderList");
+        }
     }
 }

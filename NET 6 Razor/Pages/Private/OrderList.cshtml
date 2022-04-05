@@ -2,30 +2,29 @@
 @model NET_6_Razor.Pages.Private.OrderListModel
 @{
 }
-@*<h1>Список товаров</h1>
+<h1>Список заказов</h1>
 <hr />
 <table class="table">
     <thead>
-        <tr><th>Название</th><th>Количество</th><th>Цена</th><th>Описание</th></tr>
+        <tr><th>ID заказа</th><th>ID пользователя</th><th>Дата заказа</th></tr>
     </thead>
     <tbody>
         @foreach (var order in Model.orderList)
         {
             <tr>
-                <td>@order.Title</td>
-                <td>@order.Quantity</td>
-                <td>@order.Price</td>
-                <td>@order.Description</td>
+                <td>@order.ID_order</td>
+                <td>@order.ID_user</td>
+                <td>@order.Date</td>
                 <td>
                     <form method="post">
-                        <button type="submit" asp-page="/Private/ProductUpdate" asp-route-id_product="@order.ID_order">Изменить</button>
-                        <button type="submit" asp-page-handler="Delete" asp-route-id_product="@order.ID_order">Удалить</button>
+                        <button type="submit" asp-page="/Private/OrderUpdate" asp-route-id_order="@order.ID_order">Изменить</button>
+                        <button type="submit" asp-page-handler="Delete" asp-route-id_order="@order.ID_order">Удалить</button>
                     </form>
                 </td>
             </tr>
         }
-      </tbody>
+    </tbody>
 </table>
 <form method="post">
     <button type="submit" asp-page="/Private/OrderCreate">Создать</button>
-</form>*@
+</form>

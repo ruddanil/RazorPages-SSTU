@@ -1,0 +1,32 @@
+﻿@page
+@model NET_6_Razor.Pages.Private.OrderProductListModel
+@{
+}
+<h1>Список товаров в заказах</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr><th>ID детализаци</th><th>ID заказа</th><th>ID продукта</th><th>Количество</th><th>Цена за единицу</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var orderProduct in Model.orderProductList)
+        {
+            <tr>
+                <td>@orderProduct.ID_orderProduct</td>
+                <td>@orderProduct.ID_order</td>
+                <td>@orderProduct.ID_product</td>
+                <td>@orderProduct.Quantity</td>
+                <td>@orderProduct.PricePerUnit</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" asp-page="/Private/OrderProductUpdate" asp-route-id_orderProduct="@orderProduct.ID_orderProduct">Изменить</button>
+                        <button type="submit" asp-page-handler="Delete" asp-route-id_orderProduct="@orderProduct.ID_orderProduct">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form method="post">
+    <button type="submit" asp-page="/Private/OrderCreate">Создать</button>
+</form>

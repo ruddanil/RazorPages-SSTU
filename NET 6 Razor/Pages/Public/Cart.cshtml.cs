@@ -10,10 +10,14 @@ namespace NET_6_Razor.Pages.Public
     public class CartModel : PageModel
     {
         private ProductManager productManager = DependencyResolver.Instance.ProductManager;
+        private OrderManager orderManager = DependencyResolver.Instance.OrderManager;
+        private OrderProductManager orderProductManager = DependencyResolver.Instance.OrderProductManager;
         Product product;
+        Order order;
+
         public List<Item> cart { get; set; }
         public decimal Total { get; set; }
-        
+
 
         public void OnGet()
         {
@@ -78,16 +82,33 @@ namespace NET_6_Razor.Pages.Public
             return RedirectToPage("/Public/Cart");
         }
 
-        public IActionResult OnPostCreateOrder()
+        public IActionResult OnPostCreateOrder(Guid id, Guid id_orderProduct)
         {
             cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
 
+            string? id_user = HttpContext.Session.GetString("id");
+            if (id_user == null) throw new ArgumentNullException(nameof(id_user));
+            DateTime date = DateTime.Now;
+
+            Guid id_order = orderManager.createOrder(id, new Guid(id_user), date);
+
+            order = orderManager.readOrder(id);
 
             for (var i = 0; i < cart.Count; i++)
             {
-                cart[i].Product
+                OrderProduct orderProduct;
+                Product product = cart[i].Product;
+                Guid id_product = product.ID_product;
+                int quantity = cart[i].Quantity;
+                decimal pricePerUnit = product.Price;
+                orderProductManager.createOrderProduct(id_orderProduct, id_order, id_product, quantity, pricePerUnit);
             }
-            return RedirectToPage("/Public/Cart");
+            for (var i = 0; i < cart.Count; i++)
+            {
+                cart.RemoveAt(i);
+            }
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            return RedirectToPage("/Public/ProductListUser");
         }
 
         public void OnPost()
