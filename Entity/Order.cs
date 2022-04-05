@@ -18,8 +18,5 @@ namespace Entity
             ID_user = id_user;
             Date = date;
         }
-
     }
-
-    
 }

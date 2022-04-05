@@ -10,7 +10,7 @@
             <label>Пароль: </label><br />
             <input type="password" name="password" placeholder="********" minlength="8" required><br />
             <label>@Model.errorMassage</label><br />
-            <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button><br /><br />
+            <button class="form_auth_button" type="submit" name="form_auth_submit" asp-page-handler="Login">>Войти</button><br /><br />
         </form>
         <div>
             Аккаунт еще не создан? <a asp-page="/Account/Registration" asp-page-handler="Signin">Зарегистрироваться</a>

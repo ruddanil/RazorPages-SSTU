@@ -2,6 +2,8 @@
 @model NET_6_Razor.Pages.Account.WelcomeModel
 
 <h1>Добро пожаловать!</h1>
-<label>Ваш логин: @Model.login</label>
-<label>Ваш пароль: @Model.password</label>
+<label>Ваш логин: @Model.login</label><br />
+<label>Ваш пароль: @Model.password</label><br />
+<label>Администраторские права: @Model.isAdmin</label><br />
+<br />
 <a asp-page="Account/Login" asp-page-handler="Logout">Logout</a>

@@ -3,7 +3,7 @@ using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace NET_6_Razor.Pages.ProductCRUD
+namespace NET_6_Razor.Pages.Private
 {
     public class ProductUpdateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace NET_6_Razor.Pages.ProductCRUD
             product = productManager.readProduct(id_product);
             Product updatedProduct = new(id_product, title, quantity, price, description);
             productManager.updateProduct(updatedProduct);
-            return RedirectToPage("/ProductCRUD/ProductList");
+            return RedirectToPage("/Private/ProductList");
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page
-@model NET_6_Razor.Pages.UserCRUD.UserListModel
+@model NET_6_Razor.Pages.Private.UserListModel
 @{
 }
 <h1>Список пользователей</h1>
@@ -24,7 +24,7 @@
                 <td>@user.IsAdmin</td>
                 <td>
                     <form method="post">
-                        <button type="submit" asp-page="/UserCRUD/UserUpdate" asp-route-id="@user.Id">Изменить</button>
+                        <button type="submit" asp-page="/Private/UserUpdate" asp-route-id="@user.Id">Изменить</button>
                         <button type="submit" asp-page-handler="Delete" asp-route-id="@user.Id">Удалить</button>
                     </form>
                 </td>

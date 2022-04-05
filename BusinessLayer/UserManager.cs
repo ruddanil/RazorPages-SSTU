@@ -65,5 +65,9 @@ namespace BusinessLayer
         {
             return userRepository.ReadAllUsers();
         }
+        public User findUser(string login)
+        {
+            return userRepository.FindUser(login);
+        }
     }
 }

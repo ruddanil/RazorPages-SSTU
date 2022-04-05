@@ -5,6 +5,8 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddDistributedMemoryCache();
 
+builder.Services.AddMvc();
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(1800);
@@ -22,6 +24,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection(); // Перенаправление запросов на HTTPS
+
 app.UseStaticFiles(); // Поддержка обработки статических файлов (WWW)
 
 app.UseRouting(); // Маршрутизация

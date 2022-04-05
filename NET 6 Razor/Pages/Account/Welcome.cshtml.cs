@@ -7,10 +7,12 @@ namespace NET_6_Razor.Pages.Account
     {
         public string login;
         public string password;
+        public string isAdmin;
         public void OnGet()
         {
             login = HttpContext.Session.GetString("login");
             password = HttpContext.Session.GetString("password");
+            isAdmin = HttpContext.Session.GetString("isAdmin");
         }
 
     }
