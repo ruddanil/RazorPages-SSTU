@@ -10,17 +10,25 @@ namespace DataLayer
         public void CreateUser(User user)
         {
              CustomSql(@$"INSERT INTO [dbo].[UsersList]
-                   ([Login]
-                   ,[Password]
-                   ,[Name]
-                   ,[Email]
-                   ,[Age])
-             VALUES
-                   ('{user.Login}'
-                   ,'{user.Password}'
-                   ,'{user.Name}'
-                   ,'{user.Email}'
-                   ,'{user.Age}')");
+                ([FirstName]
+                    ,[LastName]
+                    ,[MiddleName]
+                    ,[Age]
+                    ,[Login]
+                    ,[Password]
+                    ,[Email]
+                    ,[Phone]
+                    ,[IsAdmin])
+                VALUES
+                    ('{user.FirstName}'
+                    ,'{user.LastName}'
+                    ,'{user.MiddleName}'
+                    ,'{user.Age}'
+                    ,'{user.Login}'
+                    ,'{user.Password}'
+                    ,'{user.Email}'
+                    ,'{user.Phone}'
+                    ,'{user.IsAdmin}')");
         }
         public User ReadUser(Guid id)
         {
@@ -28,7 +36,7 @@ namespace DataLayer
             if (dataTable.Rows.Count > 0)
             {
                 var row = dataTable.Rows[0];
-                return new User(row.Field<Guid>("ID"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Name"), row.Field<string>("Email"), row.Field<int>("Age"));
+                return new User(row.Field<Guid>("ID"), row.Field<string>("FirstName"), row.Field<string>("LastName"), row.Field<string>("MiddleName"), row.Field<int>("Age"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Email"), row.Field<string>("Phone"), row.Field<bool>("IsAdmin"));
             }
             else
             {
@@ -41,7 +49,7 @@ namespace DataLayer
             if (dataTable.Rows.Count > 0)
             {
                 var row = dataTable.Rows[0];
-                return new User(row.Field<Guid>("ID"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Name"), row.Field<string>("Email"), row.Field<int>("Age"));
+                return new User(row.Field<Guid>("ID"), row.Field<string>("FirstName"), row.Field<string>("LastName"), row.Field<string>("MiddleName"), row.Field<int>("Age"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Email"), row.Field<string>("Phone"), row.Field<bool>("IsAdmin"));
             }
             else
             {
@@ -54,7 +62,7 @@ namespace DataLayer
             List<User> users = new();
             foreach (DataRow row in dataTable.Rows)
             {
-                users.Add(new User(row.Field<Guid>("ID"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Name"), row.Field<string>("Email"), row.Field<int>("Age"))); 
+                users.Add(new User(row.Field<Guid>("ID"), row.Field<string>("FirstName"), row.Field<string>("LastName"), row.Field<string>("MiddleName"), row.Field<int>("Age"), row.Field<string>("Login"), row.Field<string>("Password"), row.Field<string>("Email"), row.Field<string>("Phone"), row.Field<bool>("IsAdmin"))); 
             }
             return users;
 
@@ -62,12 +70,16 @@ namespace DataLayer
         public void UpdateUser(User user)
         {
            CustomSql(@$"UPDATE [dbo].[UsersList]
-               SET [Login] = '{user.Login}'
-                  ,[Password] = '{user.Password}'
-                  ,[Name] = '{user.Name}'
-                  ,[Email] = '{user.Email}'
-                  ,[Age] = '{user.Age}'
-               WHERE ID = '{user.Id}'");
+                SET [FirstName] = '{user.FirstName}'
+                    ,[LastName] = '{user.LastName}'
+                    ,[MiddleName] = '{user.MiddleName}'
+                    ,[Age] = '{user.Age}'
+                    ,[Login] = '{user.Login}'
+                    ,[Password] = '{user.Password}'
+                    ,[Email] = '{user.Email}'
+                    ,[Phone] = '{user.Phone}'
+                    ,[IsAdmin] = '{user.IsAdmin}'              
+                WHERE ID = '{user.Id}'");
         }
         public void DeleteUser(User user)
         {

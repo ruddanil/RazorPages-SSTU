@@ -10,15 +10,13 @@ namespace Entity
     {
         public Guid ID_order { get; private set; }
         public Guid ID_user { get; private set; }
-        public Guid ID_product { get; private set; }
-        public string Description { get; private set; }
+        public DateTime Date { get; private set; }
 
-        public Order(Guid iD_order, Guid iD_user, Guid iD_product, string description)
+        public Order(Guid id_order, Guid id_user, DateTime date)
         {
-            ID_order = iD_order;
-            ID_user = iD_user;
-            ID_product = iD_product;
-            Description = description ?? throw new ArgumentNullException(nameof(description));
+            ID_order = id_order;
+            ID_user = id_user;
+            Date = date;
         }
 
     }
