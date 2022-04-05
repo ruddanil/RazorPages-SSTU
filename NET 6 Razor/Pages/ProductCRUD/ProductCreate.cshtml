@@ -1,0 +1,40 @@
+﻿@page
+@model NET_6_Razor.Pages.ProductCRUD.ProductCreateModel
+@{
+}
+<h1>Создание товара</h1>
+<hr />
+<form method="post">
+    <div>
+        <label>Название</label>
+        <div>
+            <input type="text" name="title" value="" />
+        </div>
+    </div>
+    <div>
+        <label>Количество</label>
+        <div>
+            <input type="number" name="quantity" value="" />
+        </div>
+    </div>
+    <div>
+        <label>Цена</label>
+        <div>
+            <input type="number" name="price" step="0.01" value="" />
+        </div>
+    </div>
+    <div>
+        <label>Описание</label>
+        <div>
+            <input type="text" name="description" value="" />
+        </div>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Создать" asp-page-handler="Create"/>
+    </div>
+</form>
+<br />
+<div>
+    <a asp-page="/ProductCRUD/ProductList">Вернуться к списку</a>
+</div>

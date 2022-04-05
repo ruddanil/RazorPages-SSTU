@@ -1,0 +1,39 @@
+﻿@page
+@model NET_6_Razor.Pages.OrderCRUD.OrderUpdateModel
+@{
+}
+@*<h1>Редактирование товара</h1>
+<hr />
+<form method="post">
+    <div>
+        <label>Название</label>
+        <div>
+            <input type="text" name="title" value="@Model.order.Title" />
+        </div>
+    </div>
+    <div>
+        <label>Количество</label>
+        <div>
+            <input type="number" name="quantity" value="@Model.order.Quantity" />
+        </div>
+    </div>
+    <div>
+        <label>Цена</label>
+        <div>
+            <input type="number" name="price" step="0.01" value="@Model.order.Price" />
+        </div>
+    </div>
+    <div>
+        <label>Описание</label>
+        <div>
+            <input type="text" name="description" value="@Model.order.Description" />
+        </div>
+    </div><br />
+    <div>
+        <input type="submit" value="Сохранить" asp-page-handler="Update" asp-route-id_order="@Model.order.ID_order"/>
+    </div>
+</form>
+<br />
+<div>
+    <a asp-page="/OrderCRUD/OrderList">Вернуться к списку</a>
+</div>*@

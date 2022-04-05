@@ -14,9 +14,9 @@ namespace Entity
         public decimal Price { get; private set; }
         public string Description { get; private set; }
 
-        public Product(Guid iD_product, string title, int quantity, decimal price, string description)
+        public Product(Guid id_product, string title, int quantity, decimal price, string description)
         {
-            ID_product = iD_product;
+            ID_product = id_product;
             Title = title ?? throw new ArgumentNullException(nameof(title));
             Quantity = quantity;
             Price = price;

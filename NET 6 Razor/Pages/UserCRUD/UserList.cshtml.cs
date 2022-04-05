@@ -17,7 +17,6 @@ namespace NET_6_Razor.Pages.UserCRUD
         {
             userList = userManager.readAllUsers();
             User user = userManager.readUser(id);
-
             if (user != null)
             {
                 userManager.deleteUser(id);

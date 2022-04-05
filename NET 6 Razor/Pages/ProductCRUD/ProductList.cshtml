@@ -1,0 +1,31 @@
+﻿@page
+@model NET_6_Razor.Pages.ProductCRUD.ProductListModel
+@{
+}
+<h1>Список товаров</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr><th>Название</th><th>Количество</th><th>Цена</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.productList)
+        {
+            <tr>
+                <td>@product.Title</td>
+                <td>@product.Quantity</td>
+                <td>@product.Price</td>
+                <td>@product.Description</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" asp-page="/ProductCRUD/ProductUpdate" asp-route-id_product="@product.ID_product">Изменить</button>
+                        <button type="submit" asp-page-handler="Delete" asp-route-id_product="@product.ID_product">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+      </tbody>
+</table>
+<form method="post">
+    <button type="submit" asp-page="/ProductCRUD/ProductCreate">Создать</button>
+</form>

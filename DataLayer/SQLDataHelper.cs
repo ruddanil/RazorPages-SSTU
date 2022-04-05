@@ -26,7 +26,6 @@ namespace DataLayer
                 connection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter(request, connection); // Мост сопоставления таблицы на сервере и у нас
                 adapter.Fill(table); // Добавляет строки 
-                cmd.ExecuteNonQuery(); // Выполнение команды (возвращает количество измененных строк) 
             }
             return table;
         }

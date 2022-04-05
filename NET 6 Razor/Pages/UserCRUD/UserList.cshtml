@@ -2,16 +2,26 @@
 @model NET_6_Razor.Pages.UserCRUD.UserListModel
 @{
 }
+<h1>Список пользователей</h1>
+<hr />
 <table class="table">
     <thead>
-        <tr><th>Имя</th><th>Возраст</th></tr>
+        <tr><th>ID</th><th>Имя</th><th>Фамилия</th><th>Отчество</th><th>Возраст</th><th>Логин</th><th>Пароль</th><th>Email</th><th>Телефон</th><th>Администратор</th></tr>
     </thead>
     <tbody>
         @foreach (var user in Model.userList)
         {
             <tr>
-                <td>@user.Name</td>
+                <td>@user.Id</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.MiddleName</td>
                 <td>@user.Age</td>
+                <td>@user.Login</td>
+                <td>@user.Password</td>
+                <td>@user.Email</td>
+                <td>@user.Phone</td>
+                <td>@user.IsAdmin</td>
                 <td>
                     <form method="post">
                         <button type="submit" asp-page="/UserCRUD/UserUpdate" asp-route-id="@user.Id">Изменить</button>
@@ -22,3 +32,6 @@
         }
     </tbody>
 </table>
+<form method="post">
+    <button type="submit" asp-page="/Account/Registration">Зарегистрировать нового пользователя</button>
+</form>

@@ -38,29 +38,28 @@ namespace BusinessLayer
                 return password == truePassword;
             }
         }
-        public bool checkCorrectInputs(string password, string name, string email, int age)
+        public bool checkCorrectInputs(string password, string email, int age)
         {
             Regex regexEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            return (password != null && name != null && email != null && (age >= 18 && age <= 65) && regexEmail.Match(email).Success);
+            return (password != null && email != null && (age >= 18 && age <= 65) && regexEmail.Match(email).Success);
         }
-        public void addUser(Guid id, string login, string password, string name, string email, int age)
+        public void createUser(Guid id, string firstName, string lastName, string middleName, int age, string login, string password, string email, string phone, bool isAdmin)
         {
-            User user = new User(id, login, password, name, email, age);
+            User user = new User(id, firstName, lastName, middleName, age, login, password, email, phone, isAdmin);
             userRepository.CreateUser(user);
+        }
+        public User readUser(Guid id)
+        {
+            return userRepository.ReadUser(id);
+        }
+        public void updateUser(User user)
+        {
+            userRepository.UpdateUser(user);
         }
         public void deleteUser(Guid id)
         {
             User user = userRepository.ReadUser(id);
             userRepository.DeleteUser(user);
-        }
-        public void updateUser(Guid id, string login, string password, string name, string email, int age)
-        {
-            User updatedUser = new(id, login, password, name, email, age);
-            userRepository.UpdateUser(updatedUser);
-        }
-        public User readUser(Guid id)
-        {
-            return userRepository.ReadUser(id);
         }
         public List<User> readAllUsers()
         {

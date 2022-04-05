@@ -1,10 +1,5 @@
 ﻿using Entity;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer
 {
@@ -25,9 +20,9 @@ namespace DataLayer
                    ,'{product.Price}'
                    ,'{product.Description}')");
         }
-        public Product ReadProduct(Guid id)
+        public Product ReadProduct(Guid id_product)
         {
-            DataTable dataTable = CustomSql($"select * from {NameTable} WHERE ID = '{id}'");
+            DataTable dataTable = CustomSql($"select * from {NameTable} WHERE ID_product = '{id_product}'");
             if (dataTable.Rows.Count > 0)
             {
                 var row = dataTable.Rows[0];
@@ -38,7 +33,6 @@ namespace DataLayer
                 return null;
             }
         }
-
         public List<Product> ReadAllProducts()
         {
             DataTable dataTable = CustomSql($"select * from {NameTable}");
@@ -50,16 +44,16 @@ namespace DataLayer
             return products;
         }
 
-        public void UpdateUser(Product product)
+        public void UpdateProduct(Product product)
         {
             CustomSql(@$"UPDATE [dbo].[Product]
                SET [Title] = '{product.Title}'
                   ,[Quantity] = '{product.Quantity}'
                   ,[Price] = '{product.Price}'
                   ,[Description] = '{product.Description}'
-               WHERE ID = '{product.ID_product}'");
+               WHERE ID_product = '{product.ID_product}'");
         }
-        public void DeleteUser(Product product)
+        public void DeleteProduct(Product product)
         {
             CustomSql(@$"DELETE FROM [dbo].[Product]
                WHERE ID_product = '{product.ID_product}'");

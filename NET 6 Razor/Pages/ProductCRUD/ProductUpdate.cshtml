@@ -1,0 +1,39 @@
+﻿@page
+@model NET_6_Razor.Pages.ProductCRUD.ProductUpdateModel
+@{
+}
+<h1>Редактирование товара</h1>
+<hr />
+<form method="post">
+    <div>
+        <label>Название</label>
+        <div>
+            <input type="text" name="title" value="@Model.product.Title" />
+        </div>
+    </div>
+    <div>
+        <label>Количество</label>
+        <div>
+            <input type="number" name="quantity" value="@Model.product.Quantity" />
+        </div>
+    </div>
+    <div>
+        <label>Цена</label>
+        <div>
+            <input type="number" name="price" step="0.01" value="@Model.product.Price" />
+        </div>
+    </div>
+    <div>
+        <label>Описание</label>
+        <div>
+            <input type="text" name="description" value="@Model.product.Description" />
+        </div>
+    </div><br />
+    <div>
+        <input type="submit" value="Сохранить" asp-page-handler="Update" asp-route-id_product="@Model.product.ID_product"/>
+    </div>
+</form>
+<br />
+<div>
+    <a asp-page="/ProductCRUD/ProductList">Вернуться к списку</a>
+</div>

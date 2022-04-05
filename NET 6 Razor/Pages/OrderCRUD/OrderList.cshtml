@@ -1,0 +1,31 @@
+﻿@page
+@model NET_6_Razor.Pages.OrderCRUD.OrderListModel
+@{
+}
+@*<h1>Список товаров</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr><th>Название</th><th>Количество</th><th>Цена</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.orderList)
+        {
+            <tr>
+                <td>@order.Title</td>
+                <td>@order.Quantity</td>
+                <td>@order.Price</td>
+                <td>@order.Description</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" asp-page="/ProductCRUD/ProductUpdate" asp-route-id_product="@order.ID_order">Изменить</button>
+                        <button type="submit" asp-page-handler="Delete" asp-route-id_product="@order.ID_order">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+      </tbody>
+</table>
+<form method="post">
+    <button type="submit" asp-page="/OrderCRUD/OrderCreate">Создать</button>
+</form>*@

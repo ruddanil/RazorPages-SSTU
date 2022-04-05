@@ -1,37 +1,75 @@
 ﻿@page
 @model NET_6_Razor.Pages.Account.RegistrationModel
 
-<div>
+<h1>Регистрация</h1>
+<hr />
+<form method="post">
     <div>
-        <h1>Регистрация</h1>
-        <form method="post">
-            <label>Логин: </label><br />
-            <input type="text" name="login" placeholder="vasya" minlength="5" required><br />
-            <label>Пароль: </label><br />
-            <input type="password" name="password" placeholder="********" id="password" minlength="8" required><br />
-            <label>Повтор пароля: </label><br />
-            <input type="password" name="secondPassword" placeholder="********" id="secondPassword" minlength="8" required><br />
-            <label>Имя: </label><br />
-            <input type="text" name="name" placeholder="Василий" required><br />
-            <label>Email: </label><br />
-            <input type="email" name="email" placeholder="example@gmail.com" required><br />
-            <label>Возраст: </label><br />
-            <input type="number" name="age" placeholder="23" min="18" max="65" required><br />
-            <label>@Model.allError</label><br />
-            <button type="submit" name="form_auth_submit" action=che>Зарегистрироваться</button>
-        </form>
+        <label>Имя:</label>
         <div>
-            Уже есть аккаунт? <a asp-page="/Account/Login" asp-page-handler="Logout">Войти</a>
+            <input type="text" name="firstName" placeholder="Иван" required />
         </div>
     </div>
+    <div>
+        <label>Фамилия:</label>
+        <div>
+            <input type="text" name="lastName" placeholder="Васильев" required />
+        </div>
+    </div>
+    <div>
+        <label>Отчество:</label>
+        <div>
+            <input type="text" name="middleName" placeholder="Анатольевич" required />
+        </div>
+    </div>
+    <div>
+        <label>Возраст</label>
+        <div>
+            <input type="number" name="age" placeholder="25" min="18" max="65" required />
+        </div>
+    </div>
+    <div>
+        <label>Логин:</label>
+        <div>
+            <input type="text" name="login" placeholder="vasya" minlength="5" required />
+        </div>
+    </div>
+    <div>
+        <label>Пароль:</label>
+        <div>
+            <input type="password" name="password" placeholder="********" id="password" minlength="8" required />
+        </div>
+    </div>
+    <div>
+        <label>Повтор пароля:</label>
+        <div>
+            <input type="password" name="secondPassword" placeholder="********" id="password" minlength="8" required />
+        </div>
+    </div>
+    <div>
+        <label>Электронная почта:</label>
+        <div>
+            <input type="email" name="email" placeholder="example@mail.ru" value="" required />
+        </div>
+    </div>
+     <div>
+        <label>Номер телефона:</label>
+        <div>
+            <input type="text" name="phone" placeholder="+78005553535" value="" required />
+        </div>
+    </div>
+    <div>
+        <label>Возраст</label>
+        <div>
+            <input type="number" name="age" placeholder="25" min="18" max="65" required />
+        </div>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Зарегистрироваться" asp-page-handler="Create" />
+    </div>
+</form>
+<br />
+<div>
+    Уже есть аккаунт? <a asp-page="/Account/Login">Войти</a>
 </div>
-@*@section scripts {
-     <script type="text/javascript">
-        checkSecondPassword2(document.getElementById("password"),document.getElementById("secondPassword"));
-     </script>
-}*@
-
-
-
-
-

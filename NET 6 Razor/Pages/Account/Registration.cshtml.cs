@@ -22,9 +22,10 @@ namespace NET_6_Razor.Pages.Account
         public string allError = "";
         public string addError = "Некорректный ";
         bool errorFlag = false;
-        Regex regexEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-        Regex regexLogin = new Regex(@"^(?=.*[a-zA-Z]{1,})(?=.*[\d]{0,})[a-zA-Z0-9]{1,15}$");
-        public IActionResult OnPost(Guid id, string login, string password, string secondPassword, string name, string email, int age)
+        readonly Regex regexEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        readonly Regex regexLogin = new Regex(@"^(?=.*[a-zA-Z]{1,})(?=.*[\d]{0,})[a-zA-Z0-9]{1,15}$");
+        readonly Regex regexPhone = new Regex(@"^([+]?\d{1,2}[-\s]?|)\d{3}[-\s]?\d{3}[-\s]?\d{4}$");
+        public IActionResult OnPostCreate(Guid id, string firstName, string lastName, string middleName, int age, string login, string password, string secondPassword, string email, string phone, bool isAdmin)
         {
             if (!regexEmail.Match(email).Success)
             {
@@ -46,13 +47,18 @@ namespace NET_6_Razor.Pages.Account
                 errorFlag = true;
                 addError += "пароль ";
             }
+            if (!regexPhone.Match(phone).Success)
+            {
+                errorFlag = true;
+                addError += "телефон ";
+            }
             if (errorFlag)
             {
                 allError = addError;
             }
-            if (userManager.checkCorrectInputs(password, name, email, age) && errorFlag == false)
-                {
-                    userManager.addUser(id, login, password, name, email, age);
+            if (userManager.checkCorrectInputs(password, email, age) && errorFlag == false)
+            {
+                    userManager.createUser(id, firstName, lastName, middleName, age, login, password, email, phone, isAdmin);
                     return RedirectToPage("/Account/Login");
             }
             errorFlag = false;
