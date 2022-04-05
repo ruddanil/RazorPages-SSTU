@@ -3,31 +3,29 @@
 @{
 }
 <form method="post" asp-page="Public/Cart" asp-page-handler="Update">
-<table class="table">
-    <thead>
-        <tr><th>Название</th><th>Цена</th><th>Количество</th><th>Общая стоимость</th></tr>
-    </thead>
-    <tbody>
-    @if(Model.cart != null) foreach (var item in Model.cart)
-    {
-        <tr>
-            <td>@item.Product.Title</td>
-            <td>@item.Product.Price</td>
-            <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
-            <td>$@(item.Product.Price * item.Quantity)</td>
-            <td align="center"><a asp-page="/Public/Cart" asp-page-handler="Delete" asp-route-id="@item.Product.ID_product">Удалить</a></td>
-        </tr>
-    }
-        <tr>
-            <td></td>
-            <td></td>
-            <td><button type="submit" asp-page-handler="Update">Обновить</button></td>
-            <td>Всего: $@Model.Total</td>
-        </tr>
-        <tr>
-            <td align="center"><button type="submit" asp-page-handler="CreateOrder">Заказать</button></td>
-        </tr>
-      </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr><th>Название</th><th>Цена</th><th>Количество</th><th>Общая стоимость</th></tr>
+        </thead>
+        <tbody>
+            @if (Model.cart != null) foreach (var item in Model.cart)
+                {
+                    <tr>
+                        <td>@item.Product.Title</td>
+                        <td>@item.Product.Price</td>
+                        <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
+                        <td>@(item.Product.Price * item.Quantity)</td>
+                        <td align="center"><a asp-page="/Public/Cart" asp-page-handler="Delete" asp-route-id="@item.Product.ID_product">Удалить</a></td>
+                    </tr>
+                }
+            <tr>
+                <td></td>
+                <td></td>
+                <td><button type="submit" asp-page-handler="Update">Обновить</button></td>
+                <td>Всего: @Model.Total</td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit" asp-page-handler="CreateOrder">Заказать</button>
 </form>
 <a asp-page="/Public/ProductListUser">Продолжить покупки</a>

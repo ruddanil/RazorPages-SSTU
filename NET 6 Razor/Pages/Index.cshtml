@@ -1,3 +1,44 @@
 ﻿@page
 @model NET_6_Razor.Pages.IndexModel
 
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td>Пользователи: </td>
+            <td><a class="nav-link text-dark" asp-page="/Account/Login">Авторизация</a></td>
+            <td><a class="nav-link text-dark" asp-page="/Account/Registration">Регистрация</a></td>
+            <td><a class="nav-link text-dark" asp-page="/Private/UserList">Список пользователей</a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Товары: </td>
+            <td><a class="nav-link text-dark" asp-page="/Private/ProductCreate">Создание товара (админ)</a></td>
+            <td><a class="nav-link text-dark" asp-page="/Private/ProductList">Список товаров (админ)</a></td>
+            <td><a class="nav-link text-dark" asp-page="/Public/ProductListUser">Список товаров (пользователь)</a></td>
+            <td><a class="nav-link text-dark" asp-page="/Public/Cart">Корзина</a></td>
+        </tr>
+        <tr>
+            <td>Заказы: </td>
+            <td><a class="nav-link text-dark" asp-page="/Private/OrderCreate">Создание заказа (админ)</a></td>
+            <td><a class="nav-link text-dark" asp-page="/Private/OrderList">Список заказов (админ)</a></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Детализации: </td>
+            <td><a class="nav-link text-dark" asp-page="/Private/OrderProductCreate">Создание детализаций (админ)</a></td>
+            <td><a class="nav-link text-dark" asp-page="/Private/OrderProductList">Список детализаций (админ)</a></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Задания: </td>
+            <td><a class="nav-link text-dark" asp-area="" asp-page="/Tasks/SimpleLogin">Авторизация из Dictionary</a></td>
+            <td><a class="nav-link text-dark" asp-area="" asp-page="/Tasks/Radiobutton">Объединение кнопок</a></td>
+            <td></td>
+            <td></td>
+        </tr>
+</table>
+
+

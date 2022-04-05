@@ -2,38 +2,33 @@
 @model NET_6_Razor.Pages.Private.OrderUpdateModel
 @{
 }
-@*<h1>Редактирование товара</h1>
+<h1>Редактирование заказа</h1>
 <hr />
 <form method="post">
     <div>
-        <label>Название</label>
+        <label>ID заказа</label>
         <div>
-            <input type="text" name="title" value="@Model.order.Title" />
+            <input type="text" name="id_order" value="@Model.order.ID_order" disabled />
         </div>
     </div>
     <div>
-        <label>Количество</label>
+        <label>ID пользователя</label>
         <div>
-            <input type="number" name="quantity" value="@Model.order.Quantity" />
+            <input type="text" name="id_user" value="@Model.order.ID_user" />
         </div>
     </div>
     <div>
-        <label>Цена</label>
+        <label>Дата заказа</label>
         <div>
-            <input type="number" name="price" step="0.01" value="@Model.order.Price" />
+            <input type="datetime" name="date" value="@Model.order.Date" />
         </div>
     </div>
+    <br />
     <div>
-        <label>Описание</label>
-        <div>
-            <input type="text" name="description" value="@Model.order.Description" />
-        </div>
-    </div><br />
-    <div>
-        <input type="submit" value="Сохранить" asp-page-handler="Update" asp-route-id_order="@Model.order.ID_order"/>
+        <input type="submit" value="Сохранить" asp-page-handler="Update" asp-route-id_order="@Model.order.ID_order" />
     </div>
 </form>
 <br />
 <div>
     <a asp-page="/Private/OrderList">Вернуться к списку</a>
-</div>*@
+</div>

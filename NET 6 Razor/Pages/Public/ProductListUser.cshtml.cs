@@ -15,4 +15,4 @@ namespace NET_6_Razor.Pages.Public
         }
     }
 }
- 
+

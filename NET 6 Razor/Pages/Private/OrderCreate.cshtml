@@ -1,40 +1,34 @@
 ﻿@page
 @model NET_6_Razor.Pages.Private.OrderCreateModel
-@{
-}
-@*<h1>Создание товара</h1>
+
+<h1>Создание товара</h1>
 <hr />
 <form method="post">
     <div>
-        <label>Название</label>
+        <label>ID заказа</label>
         <div>
-            <input type="text" name="title" value="" />
+            <input type="text" name="id_order" value="" disabled />
         </div>
     </div>
     <div>
-        <label>Количество</label>
+        <label>ID пользователя</label>
         <div>
-            <input type="number" name="quantity" value="" />
+            <input type="text" name="id" value="" />
         </div>
     </div>
     <div>
-        <label>Цена</label>
+        <label>Дата заказа</label>
         <div>
-            <input type="number" name="price" step="0.01" value="" />
-        </div>
-    </div>
-    <div>
-        <label>Описание</label>
-        <div>
-            <input type="text" name="description" value="" />
+            <input type="datetime" name="date" value="" />
         </div>
     </div>
     <br />
     <div>
-        <input type="submit" value="Создать" asp-page-handler="Create"/>
+        <input type="submit" value="Создать заказ" asp-page-handler="Create" />
     </div>
 </form>
 <br />
 <div>
     <a asp-page="/Private/OrderList">Вернуться к списку</a>
-</div>*@
+</div>
+

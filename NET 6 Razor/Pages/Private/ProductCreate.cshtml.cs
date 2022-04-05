@@ -17,7 +17,7 @@ namespace NET_6_Razor.Pages.Private
         {
             return Page();
         }
-        public IActionResult OnPostCreate (Guid id_product, string title, int quantity, decimal price, string description)
+        public IActionResult OnPostCreate(Guid id_product, string title, int quantity, decimal price, string description)
         {
             productManager.createProduct(id_product, title, quantity, price, description);
             return RedirectToPage("/Private/ProductList");

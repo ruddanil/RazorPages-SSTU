@@ -17,10 +17,10 @@ namespace NET_6_Razor.Pages.Private
         {
             return Page();
         }
-        public void OnPostCreate (Guid id_order, string title, int quantity, decimal price, string description)
+        public IActionResult OnPostCreate(Guid id_order, Guid id_user, DateTime date)
         {
-            //orderManager.createOrder(id_order, title, quantity, price, description);
-            //return RedirectToPage("/OrderCRUD/OrderList");
+            orderManager.createOrder(id_order, id_user, date);
+            return RedirectToPage("/Private/OrderList");
         }
     }
 }

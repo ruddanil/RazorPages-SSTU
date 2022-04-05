@@ -17,14 +17,14 @@
                 <td>@product.Price</td>
                 <td>@product.Description</td>
                 <td>
-                    <form method="post">   
+                    <form method="post">
                         <button runat="server" type="submit" id="edit" asp-page="/Private/ProductUpdate" asp-route-id_product="@product.ID_product">Изменить</button>
                         <button runat="server" type="submit" id="delete" asp-page-handler="Delete" asp-route-id_product="@product.ID_product">Удалить</button>
                     </form>
                 </td>
             </tr>
         }
-      </tbody>
+    </tbody>
 </table>
 <form method="post">
     <button type="submit" asp-page="/Private/ProductCreate">Создать</button>

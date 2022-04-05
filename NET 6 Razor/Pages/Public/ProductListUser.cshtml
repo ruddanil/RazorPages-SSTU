@@ -17,8 +17,8 @@
                 <td>@product.Price</td>
                 <td>@product.Description</td>
                 @*<td><form method="post"><button type="submit" asp-page="/Public/Cart" asp-page-handler="buynow" asp-route-id_product="@product.ID_product">Добавить в корзину</button></form></td>*@
-                <td><a asp-page="/Public/Cart" asp-page-handler="BuyNow" asp-route-id_product="@product.ID_product">Buy Now</a></td>
+                <td><a asp-page="/Public/Cart" asp-page-handler="BuyNow" asp-route-id_product="@product.ID_product">Добавить в корзину</a></td>
             </tr>
         }
-      </tbody>
+    </tbody>
 </table>

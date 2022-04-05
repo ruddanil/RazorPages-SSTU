@@ -15,10 +15,11 @@ namespace BusinessLayer
         {
             this.orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
         }
-        public void createOrder(Guid id_order, Guid id_user, DateTime date)
+        public Guid createOrder(Guid id_order, Guid id_user, DateTime date)
         {
             Order order = new Order(id_order, id_user, date);
-            orderRepository.CreateOrder(order);
+            Guid id = orderRepository.CreateOrder(order);
+            return id;
         }
         public Order readOrder(Guid id_order)
         {

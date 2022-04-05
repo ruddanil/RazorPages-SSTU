@@ -1,0 +1,46 @@
+﻿@page
+@model NET_6_Razor.Pages.Private.OrderProductUpdateModel
+@{
+}
+<h1>Редактирование детализации</h1>
+<hr />
+<form method="post">
+    <div>
+        <label>ID детализации</label>
+        <div>
+            <input type="text" name="id_orderProduct" value="@Model.orderProduct.ID_orderProduct" disabled />
+        </div>
+    </div>
+    <div>
+        <label>ID заказа</label>
+        <div>
+            <input type="text" name="id_order" value="@Model.orderProduct.ID_order" />
+        </div>
+    </div>
+    <div>
+        <label>ID товара</label>
+        <div>
+            <input type="text" name="id_product" value="@Model.orderProduct.ID_product" />
+        </div>
+    </div>
+    <div>
+    <div>
+        <label>Количество</label>
+        <div>
+            <input type="text" name="quantity" value="@Model.orderProduct.Quantity" />
+        </div>
+    </div>
+        <label>Цена за единицу</label>
+        <div>
+            <input type="datetime" name="pricePerUnit" value="@Model.orderProduct.PricePerUnit" />
+        </div>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Сохранить" asp-page-handler="Update" asp-route-id_orderProduct="@Model.orderProduct.ID_orderProduct" />
+    </div>
+</form>
+<br />
+<div>
+    <a asp-page="/Private/OrderProductList">Вернуться к списку</a>
+</div>

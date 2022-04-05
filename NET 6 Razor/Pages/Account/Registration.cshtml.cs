@@ -58,8 +58,8 @@ namespace NET_6_Razor.Pages.Account
             }
             if (userManager.checkCorrectInputs(password, email, age) && errorFlag == false)
             {
-                    userManager.createUser(id, firstName, lastName, middleName, age, login, password, email, phone, isAdmin);
-                    return RedirectToPage("/Account/Login");
+                userManager.createUser(id, firstName, lastName, middleName, age, login, password, email, phone, isAdmin);
+                return RedirectToPage("/Account/Login");
             }
             errorFlag = false;
             return Page();

@@ -23,6 +23,5 @@ namespace NET_6_Razor.Pages.Private
             }
             orderList = orderManager.readAllOrders();
         }
-        
     }
 }

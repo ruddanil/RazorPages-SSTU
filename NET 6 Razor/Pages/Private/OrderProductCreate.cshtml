@@ -1,0 +1,46 @@
+﻿@page
+@model NET_6_Razor.Pages.Private.OrderProductCreateModel
+@{
+}
+<h1>Создание детализации</h1>
+<hr />
+<form method="post">
+    <div>
+        <label>ID детализации</label>
+        <div>
+            <input type="text" name="id_orderProduct" value="" disabled />
+        </div>
+    </div>
+    <div>
+        <label>ID заказа</label>
+        <div>
+            <input type="text" name="id_order" value="" />
+        </div>
+    </div>
+    <div>
+        <label>ID товара</label>
+        <div>
+            <input type="text" name="id_product" value="" />
+        </div>
+    </div>
+    <div>
+        <label>Количество</label>
+        <div>
+            <input type="datetime" name="quantity" value="" />
+        </div>
+    </div>
+    <div>
+        <label>Цена за единицу</label>
+        <div>
+            <input type="text" name="pricePerUnit" value="" />
+        </div>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Создать детализацию" asp-page-handler="Create" />
+    </div>
+</form>
+<br />
+<div>
+    <a asp-page="/Private/OrderProductList">Вернуться к списку</a>
+</div>

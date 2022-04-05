@@ -8,7 +8,7 @@ namespace NET_6_Razor
         #region singleton 
         private static DependencyResolver _instance;
 
-        public static DependencyResolver Instance 
+        public static DependencyResolver Instance
         {
             get
             {
@@ -25,7 +25,8 @@ namespace NET_6_Razor
         public UserManager UserManager { get; private set; }
         public ProductManager ProductManager { get; private set; }
         public OrderManager OrderManager { get; private set; }
-        private DependencyResolver() 
+        public OrderProductManager OrderProductManager { get; private set; }
+        private DependencyResolver()
         {
             UserRepository userRepository = new("UsersList", connectionString);
             UserManager = new(userRepository);
@@ -33,6 +34,8 @@ namespace NET_6_Razor
             ProductManager = new(productRepository);
             OrderRepository orderRepository = new("Order", connectionString);
             OrderManager = new(orderRepository);
+            OrderProductRepository orderProductRepository = new("OrderProduct", connectionString);
+            OrderProductManager = new(orderProductRepository);
         }
     }
 }
