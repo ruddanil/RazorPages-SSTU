@@ -19,7 +19,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-
                     </ul>
                 </div>
             </div>
@@ -28,12 +27,42 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <div class="d-flex justify-content-around">
+                <div class="card default-section" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Секция 1</h5>
+                        @if (IsSectionDefined("Placeholder1"))
+                        {
+                            @RenderSection("Placeholder1")
+                        }
+                        else
+                        {
+                            <div>Содержимое по умолчанию</div>
+                        }
+                        @RenderSection("SectionWithDefault", required: false)
+                        <div></div>
+                    </div>
+                </div>
+                <div class="card default-section" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Секция 2</h5>
+                        @if (IsSectionDefined("Placeholder2"))
+                        {
+                            @RenderSection("Placeholder2")
+                        }
+                        else
+                        {
+                            <div>Содержимое по умолчанию</div>
+                        }
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; Рудь Даниил, СГТУ, б2-ИФСТ-21
+            &copy; Рудь Даниил, СГТУ, б2-ИФСТ-21 <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 

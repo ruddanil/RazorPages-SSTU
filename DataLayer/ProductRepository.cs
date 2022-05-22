@@ -17,7 +17,7 @@ namespace DataLayer
              VALUES
                    ('{product.Title}'
                    ,'{product.Quantity}'
-                   ,'{product.Price}'
+                   ,'{product.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}'
                    ,'{product.Description}')");
         }
         public Product ReadProduct(Guid id_product)
@@ -49,7 +49,7 @@ namespace DataLayer
             CustomSql(@$"UPDATE [dbo].[Product]
                SET [Title] = '{product.Title}'
                   ,[Quantity] = '{product.Quantity}'
-                  ,[Price] = '{product.Price}'
+                  ,[Price] = '{product.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}'
                   ,[Description] = '{product.Description}'
                WHERE ID_product = '{product.ID_product}'");
         }

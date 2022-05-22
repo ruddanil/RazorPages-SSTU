@@ -1,0 +1,22 @@
+﻿@page
+@model NET_6_Razor.Pages.Tasks.CalculatorModel
+@{
+}
+
+<h1>Простейший калькулятор</h1>
+<form method="POST">
+    <div>
+        <input type="number" step="0.000001" name="number1" />
+        <select name="option">
+            <br />
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input type="number" step="0.000001" name="number2" />
+        <input type="submit" value="Вычислить" /><br />
+    </div>
+    <label>Результат: </label>
+    <label name="result">@Model.result</label>
+</form>

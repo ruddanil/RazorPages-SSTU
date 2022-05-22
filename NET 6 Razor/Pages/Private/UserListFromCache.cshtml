@@ -1,18 +1,18 @@
 ﻿@page
-@model NET_6_Razor.Pages.Private.UserListModel
+@model NET_6_Razor.Pages.Private.UserListFromCacheModel
 @{
 }
 
-<h1>Список пользователей</h1>
+<h1>Список пользователей из кэша</h1>
 <hr />
 <table class="table">
     <thead>
         <tr><th>ID</th><th>Имя</th><th>Фамилия</th><th>Отчество</th><th>Возраст</th><th>Логин</th><th>Пароль</th><th>Email</th><th>Телефон</th><th>Администратор</th></tr>
     </thead>
     <tbody>
-        @if (Model.userList != null)
+        @if (Model.userListCache != null)
         {
-            foreach (var user in Model.userList)
+            foreach (var user in Model.userListCache)
             {
                 <tr>
                     <td>@user.Id</td>
@@ -36,8 +36,4 @@
         }
     </tbody>
 </table>
-<form method="post">
-    <button type="submit" asp-page="/Private/UserListFromCache" asp-page-handler="Load">Загрузить из кэша</button>
-    <button type="submit" asp-page="/Account/Registration">Зарегистрировать нового пользователя</button>
-</form>
 

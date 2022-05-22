@@ -53,7 +53,7 @@ namespace DataLayer
             }
             else
             {
-                return null;
+                return null; 
             }
         }
         public List<User> ReadAllUsers()
@@ -86,8 +86,5 @@ namespace DataLayer
           CustomSql(@$"DELETE FROM [dbo].[UsersList]
                WHERE ID = '{user.Id}'");
         }
-
-        
-
     }
 }

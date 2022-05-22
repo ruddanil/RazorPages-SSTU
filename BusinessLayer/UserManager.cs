@@ -24,7 +24,7 @@ namespace BusinessLayer
                 return password == user.Password;
             }
         }
-        Dictionary<string, string> logPass = new Dictionary<string, string>() { { "log", "12345"}, { "lOg1", "12345qWerty" } };
+        Dictionary<string, string> logPass = new Dictionary<string, string>() { { "log", "12345678"}, { "LOG1", "12345678" } };
         public bool checkPasswordSimple(string login, string password)
         {
             if (!logPass.ContainsKey(login.ToLower())) return false; 

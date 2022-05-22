@@ -23,7 +23,7 @@ namespace DataLayer
                    ('{orderProduct.ID_order}'
                    ,'{orderProduct.ID_product}'
                    ,'{orderProduct.Quantity}'
-                   ,'{orderProduct.PricePerUnit}')");
+                   ,'{orderProduct.PricePerUnit.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}')");
         }
 
         public OrderProduct ReadOrderProduct(Guid id_orderProduct)
@@ -57,7 +57,7 @@ namespace DataLayer
                SET [ID_order] = '{orderProduct.ID_order}'
                 ,[ID_product] = '{orderProduct.ID_product}'
                 ,[Quantity] = '{orderProduct.Quantity}'
-                ,[PricePerUnit] = '{orderProduct.PricePerUnit}'");
+                ,[PricePerUnit] = '{orderProduct.PricePerUnit.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}'");
         }
         public void DeleteOrderProduct(OrderProduct orderProduct)
         {

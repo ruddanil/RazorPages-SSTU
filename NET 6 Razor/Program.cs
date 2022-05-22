@@ -7,6 +7,8 @@ builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddMvc();
 
+builder.Services.AddMemoryCache();
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(1800);
@@ -22,6 +24,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
+app.UseStatusCodePagesWithReExecute("/Error");
 
 app.UseHttpsRedirection(); // Перенаправление запросов на HTTPS
 
@@ -32,6 +35,8 @@ app.UseRouting(); // Маршрутизация
 app.UseAuthorization();
 
 app.UseSession();
+
+
 
 app.MapRazorPages();
 
