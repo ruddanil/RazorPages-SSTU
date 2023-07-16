@@ -1,4 +1,4 @@
-# RazorPages-SSTU
+# Tasks-NET-RazorPages-SSTU
 
 The project combines solutions for six educational practical tasks. It follows a **three-tier architecture** and utilizes **Razor Pages**.
 
